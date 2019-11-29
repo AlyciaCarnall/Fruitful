@@ -25,7 +25,7 @@ public:
 	Visualisation();
 	~Visualisation();
 
-	bool initialise();
+	bool Initialise();
 
 	bool CreateSprite(const std::string& filename, const std::string& name);
 

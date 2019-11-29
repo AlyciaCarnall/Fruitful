@@ -10,13 +10,15 @@ Visualisation::~Visualisation()
 	delete[]data;
 }
 
-bool Visualisation::initialise()
+bool Visualisation::Initialise()
 {
 	//Functions should be called after HAPI is initialized
-	if (!HAPI.Initialise(screenWidth, screenHeight, "Milestone 3"))
+	if (!HAPI.Initialise(screenWidth, screenHeight, "Fruitful Alycia Carnall T7022349"))
 		return false;
 
 	screen = HAPI.GetScreenPointer();
+
+	HAPI.SetShowFPS(true);
 
 	return true;
 }

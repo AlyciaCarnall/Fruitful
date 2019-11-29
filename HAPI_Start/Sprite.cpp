@@ -41,9 +41,12 @@ void Sprite::Render(BYTE* screen, int screenWidth, int screenHeight, int posX, i
 	BYTE* screenPointer = screen + ((size_t)posX + (size_t)posY * screenWidth) * 4;
 	BYTE* texturePointer = data + (sourceRect.left + (size_t)sourceRect.top * textureWidth) * 4;
 
-	for (int y = 0; y < sourceRect.height(); y++)
+	const int height = sourceRect.height();
+	const int width = sourceRect.width();
+
+	for (int y = 0; y < height; y++)
 	{
-		for (int x = 0; x < sourceRect.width(); x++)
+		for (int x = 0; x < width; x++)
 		{
 			BYTE red = texturePointer[0];
 			BYTE green = texturePointer[1];
