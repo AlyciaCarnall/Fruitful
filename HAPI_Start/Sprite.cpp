@@ -18,7 +18,25 @@ bool Sprite::Load(const std::string & filename)
 	return true;
 }
 
-void Sprite::Render(BYTE* screen, int screenWidth, int screenHeight, int posX, int posY)
+void Sprite::Render(BYTE* screen, int screenWidth, int screenHeight, int texWidth, int texHeight, int posX, int posY)
+{
+	BYTE* screenPointer = screen + ((size_t)posX + (size_t)posY * screenWidth) * 4;
+	BYTE* texturePointer = data;
+
+	for (int y = 0; y < texHeight; y++)
+	{
+		memcpy(screenPointer, texturePointer, (size_t)texWidth * 4);
+
+		// Move texture pointer to next line
+		texturePointer += (size_t)texWidth * 4;
+
+		// Move screen pointer to next line
+		screenPointer += (size_t)screenWidth * 4;
+	}
+
+}
+
+void Sprite::BlitRender(BYTE* screen, int screenWidth, int screenHeight, int posX, int posY)
 {
 	Rectangle destRect(0, screenWidth, 0, screenHeight);
 	Rectangle sourceRect(0, textureWidth, 0, textureHeight);

@@ -13,7 +13,6 @@ enum class eSide
 
 class Visualisation;
 
-
 class Entity
 {
 protected:
@@ -23,15 +22,12 @@ protected:
 	std::string mGFXname;
 	Vector2 mPos;	
 	bool mAlive{ false };
-	float mSpeed{ 1.0f };
+	float mSpeed{ 5.0f };
 
 public:
 
 	Entity(const std::string& name);
 	virtual ~Entity() = default;
-
-
-	void Render(Visualisation& mVis);
 
 	void SetPosition(Vector2 newPos) { mPos = newPos; }
 

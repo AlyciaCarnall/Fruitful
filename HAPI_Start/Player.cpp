@@ -2,7 +2,7 @@
 
 Player::Player(const std::string& name) : Entity(mGFXname)
 {
-
+	mSide = eSide::ePlayer;
 }
 
 void Player::Update()

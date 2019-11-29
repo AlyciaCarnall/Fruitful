@@ -44,22 +44,12 @@ void Visualisation::ClearToBlack(BYTE black)
 	memset(screen, black, (size_t)screenWidth * screenHeight * 4);
 }
 
-void Visualisation::BlitFastRender(const std::string& name, int posX, int posY)
+void Visualisation::BlitFastRender(const std::string& name, int screenPosX, int screenPosY)
 {
-	BYTE* screenPointer = screen + ((size_t)posX + (size_t)posY * screenWidth) * 4;
-	BYTE* texturePointer = data;
+	if (spriteMap.find(name) == spriteMap.end())
+		return;
 
-	for (int y = 0; y < height; y++)
-	{
-		memcpy(screenPointer, texturePointer, (size_t)width * 4);
-
-		// Move texture pointer to next line
-		texturePointer += (size_t)width * 4;
-
-		// Move screen pointer to next line
-		screenPointer += (size_t)screenWidth * 4;
-	}
-
+	spriteMap.at(name)->Render(screen, screenWidth, screenHeight, 960, 540, screenPosX, screenPosY);
 }
 
 void Visualisation::BlitTransparentRender(const std::string& name, int screenPosX, int screenPosY) const
@@ -67,7 +57,7 @@ void Visualisation::BlitTransparentRender(const std::string& name, int screenPos
 	if (spriteMap.find(name) == spriteMap.end())
 		return;
 
-	spriteMap.at(name)->Render(screen, screenWidth, screenHeight, screenPosX, screenPosY);
+	spriteMap.at(name)->BlitRender(screen, screenWidth, screenHeight, screenPosX, screenPosY);
 }
 
 int Visualisation::getSpriteWidth(const std::string& name)
