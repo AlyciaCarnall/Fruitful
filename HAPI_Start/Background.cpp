@@ -8,7 +8,7 @@ Background::~Background()
 {
 }
 
-void Background::Update()
+void Background::Update(const Visualisation& mVis)
 {
 
 

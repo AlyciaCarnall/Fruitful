@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "Bullet.h"
 
+
 World::World()
 {
 
@@ -18,7 +19,7 @@ World::~World()
 		delete p;
 }
 
-bool World::Initialise()
+bool World::Load()
 {
 	if (!mVis->CreateSprite("data\\orange.png", "Player"))
 		HAPI.UserMessage("Unable to load player", "ERROR");
@@ -30,11 +31,11 @@ bool World::Initialise()
 
 	entityVector.push_back(newPlayer);
 
-	for (int i{ 0 }; i < 200; ++i)
+	/*for (int i{ 0 }; i < 200; ++i)
 	{
 		Bullet* newBullet = new Bullet("Bullet");
 		entityVector.push_back(newBullet);
-	}
+	}*/
 
 	return true;
 }
@@ -46,20 +47,19 @@ void World::Run()
 	if (!mVis->Initialise())
 		HAPI.UserMessage("Unable to initialise", "ERROR");
 
-	if(!Initialise())
-		HAPI.UserMessage("Unable to initialise", "ERROR");
+	if(!Load())
+		HAPI.UserMessage("Unable to load", "ERROR");
 
-
+		
 	while (HAPI.Update())
 	{
-
 		mVis->ClearToBlack(0);		
+
+		//put in each update and get the world from each class
 		mVis->BlitFastRender("Background", 0, 0);
-		mVis->BlitTransparentRender("Player", 0, 0);
 
-
-		/*for (auto& p : entityVector)
-			p->Update();*/
+		for (auto& p : entityVector)
+			p->Update(*mVis);
 
 		for (size_t i{ 0 }; i < entityVector.size(); ++i)
 		{
@@ -69,7 +69,6 @@ void World::Run()
 
 				//entityVector[i]->CheckCollision(*entityVector[j]);
 
-				entityVector[i]->Update();
 			}
 		}
 	}

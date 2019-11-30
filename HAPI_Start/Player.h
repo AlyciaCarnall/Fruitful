@@ -7,7 +7,7 @@ class Player :	public Entity
 public:
 	Player(const std::string& name);
 
-	void Update() override final;
+	void Update(const Visualisation& mVis) override final;
 
 	int getNumLives() const { return 0; }
 };

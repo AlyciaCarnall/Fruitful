@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include "Visualisation.h"
 
 #include <HAPI_lib.h>
 using namespace HAPISPACE;
@@ -11,7 +12,6 @@ enum class eSide
 	eNeutral
 };
 
-class Visualisation;
 
 class Entity
 {
@@ -20,9 +20,10 @@ protected:
 	int mHealth{ 0 };
 	int mDamage{ 0 };
 	std::string mGFXname;
-	Vector2 mPos;	
+	Vector2 mPos{ 0,0 };
 	bool mAlive{ false };
 	float mSpeed{ 5.0f };
+
 
 public:
 
@@ -31,7 +32,7 @@ public:
 
 	void SetPosition(Vector2 newPos) { mPos = newPos; }
 
-	virtual void Update() = 0;
+	virtual void Update(const Visualisation & mVis) = 0;
 
 	eSide GetSide() { return mSide; }
 	

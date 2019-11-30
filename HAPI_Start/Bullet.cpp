@@ -1,10 +1,11 @@
 #include "Bullet.h"
 
+
 Bullet::Bullet(const std::string& name) : Entity(name)
 {
 }
 
-void Bullet::Update()
+void Bullet::Update(const Visualisation &mVis)
 {
 	//mPos += mDirection * mSpeed;
 

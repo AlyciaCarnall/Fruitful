@@ -1,12 +1,15 @@
 #include "Player.h"
+#include "Visualisation.h"
 
 Player::Player(const std::string& name) : Entity(mGFXname)
 {
 	mSide = eSide::ePlayer;
 }
 
-void Player::Update()
+void Player::Update(const Visualisation &mVis)
 {
+	mVis.BlitTransparentRender(mGFXname, (int)mPos.x, (int)mPos.y);
+
 	static const HAPI_TKeyboardData& Key = HAPI.GetKeyboardData();
 
 	if ((Key.scanCode[HK_RIGHT]) || Key.scanCode['D'])
