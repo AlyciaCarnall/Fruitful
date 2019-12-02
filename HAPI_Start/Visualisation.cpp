@@ -44,7 +44,7 @@ void Visualisation::ClearToBlack(BYTE black)
 	memset(screen, black, (size_t)screenWidth * screenHeight * 4);
 }
 
-void Visualisation::BlitFastRender(const std::string& name, int screenPosX, int screenPosY)
+void Visualisation::BlitFastRender(const std::string& name, int screenPosX, int screenPosY) const
 {
 	if (spriteMap.find(name) == spriteMap.end())
 		return;
@@ -60,14 +60,14 @@ void Visualisation::BlitTransparentRender(const std::string& name, int screenPos
 	spriteMap.at(name)->BlitRender(screen, screenWidth, screenHeight, screenPosX, screenPosY);
 }
 
-int Visualisation::getSpriteWidth(const std::string& name)
+int Visualisation::getSpriteWidth(const std::string& name) const
 {
-	return spriteMap[name]->getTextureWidth();
+	return spriteMap.at(name)->getTextureWidth();
 }
 
-int Visualisation::getSpriteHeight(const std::string& name)
+int Visualisation::getSpriteHeight(const std::string& name) const 
 {
-	return spriteMap[name]->getTextureHeight();
+	return spriteMap.at(name)->getTextureHeight();
 }
 
 

@@ -22,7 +22,7 @@ protected:
 	std::string mGFXname;
 	Vector2 mPos{ 0,0 };
 	bool mAlive{ false };
-	float mSpeed{ 5.0f };
+	float mSpeed{ 1.0f };
 
 
 public:

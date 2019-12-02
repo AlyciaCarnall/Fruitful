@@ -4,7 +4,7 @@
 class Background :	public Entity
 {
 public:
-	Background(std::string& name);
+	Background(const std::string& name);
 	~Background();
 
 	void Update(const Visualisation& mVis) override final;

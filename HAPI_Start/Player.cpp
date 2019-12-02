@@ -1,9 +1,13 @@
 #include "Player.h"
 #include "Visualisation.h"
 
-Player::Player(const std::string& name) : Entity(mGFXname)
+Player::Player(const std::string& name) : Entity(name)
 {
 	mSide = eSide::ePlayer;
+}
+
+Player::~Player()
+{
 }
 
 void Player::Update(const Visualisation &mVis)
@@ -12,16 +16,16 @@ void Player::Update(const Visualisation &mVis)
 
 	static const HAPI_TKeyboardData& Key = HAPI.GetKeyboardData();
 
-	if ((Key.scanCode[HK_RIGHT]) || Key.scanCode['D'])
+	if (((Key.scanCode[HK_RIGHT]) || Key.scanCode['D']) && mPos.x + mVis.getSpriteWidth("Player") < mVis.getScreenWidth())
 		mPos.x += mSpeed;
 
-	if ((Key.scanCode[HK_LEFT]) || Key.scanCode['A'])
+	if (((Key.scanCode[HK_LEFT]) || Key.scanCode['A']) && mPos.x > 0)
 		mPos.x -= mSpeed;
 
-	if ((Key.scanCode[HK_DOWN]) || Key.scanCode['S'])
+	if (((Key.scanCode[HK_DOWN]) || Key.scanCode['S']) && mPos.y + mVis.getSpriteHeight("Player") < mVis.getScreenHeight())
 		mPos.y += mSpeed;
 
-	if ((Key.scanCode[HK_UP]) || Key.scanCode['W'])
+	if (((Key.scanCode[HK_UP]) || Key.scanCode['W']) && mPos.y > 0)
 		mPos.y -= mSpeed;
 
 	int controller{ 0 };

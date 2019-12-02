@@ -27,9 +27,12 @@ bool World::Load()
 	if(!mVis->CreateSprite("data\\science-fiction-1597341_960_720.png", "Background"))
 		HAPI.UserMessage("Unable to load background", "ERROR");
 
+	Background *newBackgorund = new Background("Background");
 	Player *newPlayer = new Player("Player");
 
+	entityVector.push_back(newBackgorund);
 	entityVector.push_back(newPlayer);
+
 
 	/*for (int i{ 0 }; i < 200; ++i)
 	{
@@ -54,9 +57,6 @@ void World::Run()
 	while (HAPI.Update())
 	{
 		mVis->ClearToBlack(0);		
-
-		//put in each update and get the world from each class
-		mVis->BlitFastRender("Background", 0, 0);
 
 		for (auto& p : entityVector)
 			p->Update(*mVis);

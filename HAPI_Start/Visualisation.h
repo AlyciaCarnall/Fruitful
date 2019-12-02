@@ -30,14 +30,14 @@ public:
 	bool CreateSprite(const std::string& filename, const std::string& name);
 
 	void ClearToBlack(BYTE black = 0);
-	void BlitFastRender(const std::string& name, int screenPosX, int screenPosY);
+	void BlitFastRender(const std::string& name, int screenPosX, int screenPosY) const;
 	void BlitTransparentRender(const std::string& name, int screenPosX, int screenPosY) const;
 	
-	int getSpriteWidth(const std::string& name);
-	int getSpriteHeight(const std::string& name);
+	int getSpriteWidth(const std::string& name) const;
+	int getSpriteHeight(const std::string& name) const;
 
-	int getScreenWidth() { return screenWidth; };
-	int getScreenHeight() { return screenHeight; };
+	int getScreenWidth() const { return screenWidth; };
+	int getScreenHeight() const { return screenHeight; };
 
 };
 

@@ -15,8 +15,6 @@ private:
 	std::vector<Entity*> entityVector;
 
 public:
-
-	
 	
 	World();
 	~World();

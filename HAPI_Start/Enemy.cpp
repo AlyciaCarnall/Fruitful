@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy(std::string& name) : Entity(mGFXname)
+Enemy::Enemy(std::string& name) : Entity(name)
 {
 }
 
