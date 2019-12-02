@@ -2,7 +2,7 @@
 #include "Visualisation.h"
 #include "Player.h"
 #include "Background.h"
-#include "Enemy.h"
+#include "EnemyBoss.h"
 #include "Bullet.h"
 
 
@@ -27,12 +27,18 @@ bool World::Load()
 	if(!mVis->CreateSprite("data\\science-fiction-1597341_960_720.png", "Background"))
 		HAPI.UserMessage("Unable to load background", "ERROR");
 
+	if (!mVis->CreateSprite("data\\burger.png", "EnemyBoss"))
+		HAPI.UserMessage("Unable to load Enemy Boss", "ERROR");
+
 	Background *newBackgorund = new Background("Background");
 	Player *newPlayer = new Player("Player");
+	EnemyBoss* newBossEnemy = new EnemyBoss("EnemyBoss");
+
 
 	entityVector.push_back(newBackgorund);
-	entityVector.push_back(newPlayer);
 
+	entityVector.push_back(newBossEnemy);
+	entityVector.push_back(newPlayer);
 
 	/*for (int i{ 0 }; i < 200; ++i)
 	{

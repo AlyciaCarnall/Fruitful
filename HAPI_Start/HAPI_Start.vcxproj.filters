@@ -45,11 +45,11 @@
     <ClCompile Include="Background.cpp">
       <Filter>World</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>Visualisation</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBoss.cpp">
+      <Filter>World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,7 +80,7 @@
     <ClInclude Include="Background.h">
       <Filter>World</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
+    <ClInclude Include="EnemyBoss.h">
       <Filter>World</Filter>
     </ClInclude>
   </ItemGroup>
