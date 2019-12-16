@@ -30,8 +30,6 @@ public:
 	Entity(const std::string& name);
 	virtual ~Entity() = default;
 
-	void SetPosition(Vector2 newPos) { mPos = newPos; }
-
 	virtual void Update(const Visualisation & mVis) = 0;
 
 	eSide GetSide() { return mSide; }
