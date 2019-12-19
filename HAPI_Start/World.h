@@ -9,7 +9,7 @@ class Entity;
 class World
 {
 private:
-
+	//Visualisation instance
 	Visualisation *mVis{ nullptr };
 	
 	std::vector<Entity*> entityVector;

@@ -12,7 +12,6 @@ Player::~Player()
 
 void Player::Update(const Visualisation &mVis)
 {
-	mPos.y = 480;
 	mVis.BlitTransparentRender(mGFXname, (int)mPos.x, (int)mPos.y);
 
 	static const HAPI_TKeyboardData& Key = HAPI.GetKeyboardData();

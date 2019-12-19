@@ -4,7 +4,7 @@
 class Player : public Entity
 {
 private:
-	Vector2 newPos{ 540,960 };
+	
 public:
 	
 	Player(const std::string& name);

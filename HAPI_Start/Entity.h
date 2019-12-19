@@ -24,7 +24,6 @@ protected:
 	bool mAlive{ false };
 	float mSpeed{ 0.2f };
 
-
 public:
 
 	Entity(const std::string& name);
@@ -33,6 +32,8 @@ public:
 	virtual void Update(const Visualisation & mVis) = 0;
 
 	eSide GetSide() { return mSide; }
+
+	void SetPosition(Vector2 newPos) { mPos = newPos; }
 	
 	//bool isEnemyOf(const Entity& other) const
 	//{

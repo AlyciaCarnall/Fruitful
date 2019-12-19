@@ -3,10 +3,11 @@
 
 class Background :	public Entity
 {
+private:
+	Vector2 mBGpos = mPos;
 public:
 	Background(const std::string& name);
 	~Background();
-
 	void Update(const Visualisation& mVis) override final;
 
 };
