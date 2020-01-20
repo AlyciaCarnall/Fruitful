@@ -5,12 +5,6 @@
 #include "EnemyBoss.h"
 #include "Bullet.h"
 
-
-World::World()
-{
-
-}
-
 World::~World()
 {
 	//dynamic memory needs to be deleted after being used
@@ -28,7 +22,7 @@ bool World::Load()
 
 	Player *newPlayer = new Player("Player");		
 
-	if (!mVis->CreateSprite("data\\science-fiction-1597341_960_720.png", "Background"))
+	if (!mVis->CreateSprite("data\\kitchen.png", "Background"))
 		HAPI.UserMessage("Unable to load background", "ERROR");
 
 	Background* newBackground = new Background("Background");
@@ -42,7 +36,8 @@ bool World::Load()
 	entityVector.push_back(newBossEnemy);
 	entityVector.push_back(newPlayer);
 
-	newPlayer->SetPosition(Vector2(0,480));
+	newPlayer->SetPosition(Vector2(0,380));
+	newBossEnemy->SetPosition(Vector2(400, 270));
 
 	/*for (int i{ 0 }; i < 200; ++i)
 	{

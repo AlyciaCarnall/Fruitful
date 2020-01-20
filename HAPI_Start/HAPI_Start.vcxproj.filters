@@ -19,16 +19,16 @@
     <Filter Include="World">
       <UniqueIdentifier>{4efd9c0b-44f1-4d46-9332-639a897a707d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Visualisation\Header Files">
+      <UniqueIdentifier>{885c38c6-413a-44cf-b109-a130b15761d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Visualisation\Files">
+      <UniqueIdentifier>{58277d18-73bb-42c2-805b-f902ddbea655}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Visualisation.cpp">
-      <Filter>Visualisation</Filter>
-    </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
-      <Filter>Visualisation</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>World</Filter>
@@ -45,23 +45,20 @@
     <ClCompile Include="Background.cpp">
       <Filter>World</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Visualisation</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyBoss.cpp">
       <Filter>World</Filter>
     </ClCompile>
+    <ClCompile Include="Visualisation.cpp">
+      <Filter>Visualisation\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Visualisation\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Visualisation\Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Rectangle.h">
-      <Filter>Visualisation</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Visualisation</Filter>
-    </ClInclude>
-    <ClInclude Include="Visualisation.h">
-      <Filter>Visualisation</Filter>
-    </ClInclude>
     <ClInclude Include="World.h">
       <Filter>World</Filter>
     </ClInclude>
@@ -71,16 +68,25 @@
     <ClInclude Include="Player.h">
       <Filter>World</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="Rectangle.h">
+      <Filter>Visualisation\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Visualisation\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualisation.h">
+      <Filter>Visualisation\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
       <Filter>World</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>World</Filter>
     </ClInclude>
-    <ClInclude Include="Background.h">
+    <ClInclude Include="EnemyBoss.h">
       <Filter>World</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyBoss.h">
+    <ClInclude Include="Entity.h">
       <Filter>World</Filter>
     </ClInclude>
   </ItemGroup>

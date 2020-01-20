@@ -11,8 +11,8 @@ class Visualisation
 {
 private:
 
-	int screenHeight{ 540 };
-	int screenWidth{ 960 };
+	int screenHeight{ 500 };
+	int screenWidth{ 700 };
 	int width{ 0 }, height{ 0 };
 
 	BYTE* data{ nullptr };

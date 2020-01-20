@@ -26,7 +26,7 @@ protected:
 
 public:
 
-	Entity(const std::string& name);
+	Entity(const std::string& name) : mGFXname(name) {}
 	virtual ~Entity() = default;
 
 	virtual void Update(const Visualisation & mVis) = 0;

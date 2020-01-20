@@ -8,7 +8,7 @@ private:
 public:
 	
 	Player(const std::string& name);
-	~Player();
+	~Player() {}
 
 	void Update(const Visualisation& mVis) override final;
 

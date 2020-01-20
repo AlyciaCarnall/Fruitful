@@ -11,6 +11,7 @@ EnemyBoss::~EnemyBoss()
 
 void EnemyBoss::Update(const Visualisation& mVis)
 {
-	//mVis.BlitTransparentRender(mGFXname, (int)mPos.x, (int)mPos.y);
+	mVis.BlitTransparentRender(mGFXname, (int)mPos.x, (int)mPos.y);
 	//AI
+
 }

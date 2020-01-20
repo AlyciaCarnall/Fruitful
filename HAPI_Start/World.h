@@ -16,7 +16,7 @@ private:
 
 public:
 	
-	World();
+	World() {}
 	~World();
 
 	bool Load();
