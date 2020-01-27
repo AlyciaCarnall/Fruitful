@@ -19,6 +19,7 @@ private:
 
 	BYTE* screen{ nullptr };
 
+	//to store our collection of sprites
 	std::unordered_map<std::string, Sprite*> spriteMap;
 public:
 
@@ -27,6 +28,7 @@ public:
 
 	bool Initialise();
 
+	//creates a sprite, it is bool because it might fail
 	bool CreateSprite(const std::string& filename, const std::string& name);
 
 	void ClearToBlack(BYTE black = 0);

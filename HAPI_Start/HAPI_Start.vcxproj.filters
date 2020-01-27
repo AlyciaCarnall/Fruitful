@@ -22,51 +22,51 @@
     <Filter Include="Visualisation\Header Files">
       <UniqueIdentifier>{885c38c6-413a-44cf-b109-a130b15761d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Visualisation\Files">
+    <Filter Include="Visualisation\cpp Files">
       <UniqueIdentifier>{58277d18-73bb-42c2-805b-f902ddbea655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World\cpp Files">
+      <UniqueIdentifier>{974a3c90-9a66-409a-8902-3a8d05796593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World\Header Files">
+      <UniqueIdentifier>{475a2ae0-ba65-4e46-911d-e5a79ff0e4f6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="World.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="Background.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyBoss.cpp">
-      <Filter>World</Filter>
-    </ClCompile>
     <ClCompile Include="Visualisation.cpp">
-      <Filter>Visualisation\Files</Filter>
+      <Filter>Visualisation\cpp Files</Filter>
     </ClCompile>
     <ClCompile Include="Rectangle.cpp">
-      <Filter>Visualisation\Files</Filter>
+      <Filter>Visualisation\cpp Files</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>Visualisation\Files</Filter>
+      <Filter>Visualisation\cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>World\cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>World\cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBoss.cpp">
+      <Filter>World\cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>World\cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>World\cpp Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>World\cpp Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="World.h">
-      <Filter>World</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>World</Filter>
     </ClInclude>
     <ClInclude Include="Rectangle.h">
       <Filter>Visualisation\Header Files</Filter>
@@ -78,16 +78,22 @@
       <Filter>Visualisation\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
-      <Filter>World</Filter>
+      <Filter>World\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>World</Filter>
+      <Filter>World\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnemyBoss.h">
-      <Filter>World</Filter>
+      <Filter>World\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>World</Filter>
+      <Filter>World\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>World\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>World\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

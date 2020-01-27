@@ -7,6 +7,7 @@ Sprite::Sprite()
 
 Sprite::~Sprite()
 {
+	// to avoid memory leaks
 	delete[]data;
 }
 
@@ -18,6 +19,7 @@ bool Sprite::Load(const std::string & filename)
 	return true;
 }
 
+//fast render that simply displays the named sprite on screen with no transparency and blit capabilities 
 void Sprite::Render(BYTE* screen, int screenWidth, int screenHeight, int texWidth, int texHeight, int posX, int posY)
 {
 	BYTE* screenPointer = screen + ((size_t)posX + (size_t)posY * screenWidth) * 4;
@@ -36,8 +38,11 @@ void Sprite::Render(BYTE* screen, int screenWidth, int screenHeight, int texWidt
 
 }
 
+//The named sprite is able to be drawn on and off the screen
 void Sprite::BlitRender(BYTE* screen, int screenWidth, int screenHeight, int posX, int posY)
 {
+	//Two rectangles, with destRect being the top left of the screen,
+	// and the sourceRect is the top left of the texture
 	Rectangle destRect(0, screenWidth, 0, screenHeight);
 	Rectangle sourceRect(0, textureWidth, 0, textureHeight);
 

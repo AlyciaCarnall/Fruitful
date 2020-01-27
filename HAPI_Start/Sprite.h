@@ -13,8 +13,8 @@ public:
 	~Sprite();
 
 	bool Load(const std::string& filename);
-	void Render(BYTE* screen, int screenWidth, int screenHeight, int texWidth, int texHeight, int posX, int posY);
 
+	void Render(BYTE* screen, int screenWidth, int screenHeight, int texWidth, int texHeight, int posX, int posY);
 	void BlitRender(BYTE* screen, int screenWidth, int screenHeight, int posX, int poY);
 
 

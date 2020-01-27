@@ -4,7 +4,7 @@
 class Player : public Entity
 {
 private:
-	
+	bool onGround{ true };
 public:
 	
 	Player(const std::string& name);
