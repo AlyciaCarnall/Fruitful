@@ -1,7 +1,6 @@
 #pragma once
 #include "Vector2.h"
 #include "Visualisation.h"
-#include "Rectangle.h"
 
 #include <HAPI_lib.h>
 using namespace HAPISPACE;
@@ -24,7 +23,7 @@ protected:
 	Vector2 mPos{ 0,0 };
 	bool mAlive{ false };
 	float mSpeed{ 0.2f };
-	Rectangle rect;
+
 
 public:
 
@@ -39,9 +38,7 @@ public:
 	
 	bool isAlive() { return mAlive; }
 
-	Rectangle getRect() const { return rect; }
-
-	bool CheckCollision(Entity& other);
+	//bool CheckCollision(Entity& other);
 
 };
 

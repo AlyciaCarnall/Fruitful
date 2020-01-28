@@ -22,9 +22,10 @@
 // When this function exits the program will close down
 void HAPI_Main()
 {
-	World world;
+	World* world = new World;
 
-	world.Run();
+	world->Initialise();
+	world->Run();
 	
 	return;
 }

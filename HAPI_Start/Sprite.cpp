@@ -8,12 +8,12 @@ Sprite::Sprite()
 Sprite::~Sprite()
 {
 	// to avoid memory leaks
-	delete[]data;
+	delete[]m_data;
 }
 
 bool Sprite::Load(const std::string & filename)
 {
-	if (!HAPI.LoadTexture(filename, &data, textureWidth, textureHeight))
+	if (!HAPI.LoadTexture(filename, &m_data, textureWidth, textureHeight))
 		return false;
 
 	return true;
@@ -23,7 +23,7 @@ bool Sprite::Load(const std::string & filename)
 void Sprite::Render(BYTE* screen, int screenWidth, int screenHeight, int texWidth, int texHeight, int posX, int posY)
 {
 	BYTE* screenPointer = screen + ((size_t)posX + (size_t)posY * screenWidth) * 4;
-	BYTE* texturePointer = data;
+	BYTE* texturePointer = m_data;
 
 	for (int y = 0; y < texHeight; y++)
 	{
@@ -62,7 +62,7 @@ void Sprite::BlitRender(BYTE* screen, int screenWidth, int screenHeight, int pos
 		posY = 0;
 
 	BYTE* screenPointer = screen + ((size_t)posX + (size_t)posY * screenWidth) * 4;
-	BYTE* texturePointer = data + (sourceRect.left + (size_t)sourceRect.top * textureWidth) * 4;
+	BYTE* texturePointer = m_data + (sourceRect.left + (size_t)sourceRect.top * textureWidth) * 4;
 
 	const int height = sourceRect.height();
 	const int width = sourceRect.width();

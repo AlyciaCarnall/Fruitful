@@ -14,6 +14,43 @@ World::~World()
 		delete p;
 }
 
+void World::Update()
+{
+	switch (mode)
+	{
+	case GameMode::menu_State:
+		MainMenu();
+		break;
+
+	case GameMode::in_Game_State:
+		Play();
+		break;
+
+	case GameMode::end_Game_State:
+		break;
+
+	case GameMode::restart_Game_State:
+		break;
+
+	default:
+		break;
+	}
+
+}
+
+bool World::Initialise()
+{
+	mVis = new Visualisation;
+
+	if (!mVis->Initialise())
+		HAPI.UserMessage("Unable to initialise", "ERROR");
+
+	if (!Load())
+		HAPI.UserMessage("Unable to load", "ERROR");
+
+	return true;
+}
+
 bool World::Load()
 {
 	//Creates sprites using visualisation 
@@ -49,19 +86,51 @@ bool World::Load()
 }
 
 void World::Run()
-
-{	mVis = new Visualisation;
-
-	if (!mVis->Initialise())
-		HAPI.UserMessage("Unable to initialise", "ERROR");
-
-	if(!Load())
-		HAPI.UserMessage("Unable to load", "ERROR");
-
-		
+{
 	while (HAPI.Update())
+		Update();
+}
+
+void World::MainMenu()
+{
+	while ((HAPI.Update()))
+	{	
+		if (mode == GameMode::menu_State)
+		{
+			mVis->ClearToBlack(0);
+
+			static const HAPI_TKeyboardData& Key = HAPI.GetKeyboardData();
+			int controller{ 0 };
+			const HAPI_TControllerData& Controller = HAPI.GetControllerData(controller);
+		
+			HAPI.RenderText(50, 50, HAPI_TColour::BLUE, "FRUITFUL", 40, eBold);
+			HAPI.RenderText(100, 100, HAPI_TColour::BLUE, "PRESS 1 TO PLAY", 20);
+			HAPI.RenderText(200, 200, HAPI_TColour::BLUE, "PRESS 2 TO QUIT", 20);
+
+			if ((Key.scanCode[1]))
+				mode = GameMode::in_Game_State;
+
+			if ((Key.scanCode[2]))
+				HAPI.Close();
+		
+			if (Controller.isAttached)
+			{
+				if (Controller.digitalButtons[HK_DIGITAL_A])
+					mode = GameMode::in_Game_State;
+
+				if (Controller.digitalButtons[HK_DIGITAL_B])
+					HAPI.Close();
+			}
+		}
+		
+	}
+}
+
+void World::Play()
+{	
+	while ((HAPI.Update()) &&(mode == GameMode::in_Game_State))
 	{
-		mVis->ClearToBlack(0);		
+		mVis->ClearToBlack(0);	
 
 		for (auto& p : entityVector)
 			p->Update(*mVis);
@@ -70,8 +139,7 @@ void World::Run()
 		{
 			for (size_t j{ i+1 }; j < entityVector.size(); ++j)
 			{
-				//if(entityVector[i]->isEnemyOf(*entityVector[j]))
-
+				//if(entityVector[i]->isEnemyOf(*entityVector[j]);
 				//entityVector[i]->CheckCollision(*entityVector[j]);
 
 			}
