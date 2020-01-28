@@ -93,45 +93,33 @@ void World::Run()
 
 void World::MainMenu()
 {
-	while ((HAPI.Update()))
+	mVis->ClearToBlack(0);
+	
+	while ((HAPI.Update()) && (mode == GameMode::menu_State))
 	{	
-		if (mode == GameMode::menu_State)
+		const HAPI_TKeyboardData& Key = HAPI.GetKeyboardData();
+		const HAPI_TControllerData& Controller = HAPI.GetControllerData(0);
+		
+		if ((Key.scanCode['A']))
+			mode = GameMode::in_Game_State;
+		else if ((Key.scanCode['B']))
+			HAPI.Close();
+		
+		if (Controller.isAttached)
 		{
-			mVis->ClearToBlack(0);
-
-			static const HAPI_TKeyboardData& Key = HAPI.GetKeyboardData();
-			int controller{ 0 };
-			const HAPI_TControllerData& Controller = HAPI.GetControllerData(controller);
-		
-			HAPI.RenderText(50, 50, HAPI_TColour::BLUE, "FRUITFUL", 40, eBold);
-			HAPI.RenderText(100, 100, HAPI_TColour::BLUE, "PRESS 1 TO PLAY", 20);
-			HAPI.RenderText(200, 200, HAPI_TColour::BLUE, "PRESS 2 TO QUIT", 20);
-
-			if ((Key.scanCode[1]))
+			if (Controller.digitalButtons[HK_DIGITAL_A])
 				mode = GameMode::in_Game_State;
-
-			if ((Key.scanCode[2]))
+			else if (Controller.digitalButtons[HK_DIGITAL_B])
 				HAPI.Close();
-		
-			if (Controller.isAttached)
-			{
-				if (Controller.digitalButtons[HK_DIGITAL_A])
-					mode = GameMode::in_Game_State;
-
-				if (Controller.digitalButtons[HK_DIGITAL_B])
-					HAPI.Close();
-			}
 		}
-		
 	}
 }
 
 void World::Play()
 {	
+	mVis->ClearToBlack(0);	
 	while ((HAPI.Update()) &&(mode == GameMode::in_Game_State))
 	{
-		mVis->ClearToBlack(0);	
-
 		for (auto& p : entityVector)
 			p->Update(*mVis);
 
