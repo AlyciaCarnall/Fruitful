@@ -10,6 +10,5 @@ public:
 
 	Bullet(const std::string& name);
 	void Update(const Visualisation& mVis) override final;
-
 };
 

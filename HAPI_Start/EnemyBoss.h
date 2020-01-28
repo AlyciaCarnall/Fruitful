@@ -9,6 +9,5 @@ public:
 	~EnemyBoss();
 
 	void Update(const Visualisation& mVis) override final;
-
 };
 

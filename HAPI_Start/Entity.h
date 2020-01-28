@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector2.h"
 #include "Visualisation.h"
+#include "Rectangle.h"
 
 #include <HAPI_lib.h>
 using namespace HAPISPACE;
@@ -16,29 +17,36 @@ enum class eSide
 class Entity
 {
 protected:
-	eSide mSide{ };
-	int mHealth{ 0 };
-	int mDamage{ 0 };
-	std::string mGFXname;
 	Vector2 mPos{ 0,0 };
-	bool mAlive{ false };
+	eSide mSide{ };
+	int mHealth{ 10 };
+	int mDamage{ 10 };
+	std::string mGFXname;
+	bool mAlive{ true };
 	float mSpeed{ 0.2f };
-
+	Rectangle rect;
 
 public:
 
 	Entity(const std::string& name) : mGFXname(name) {}
 	virtual ~Entity() = default;
 
-	virtual void Update(const Visualisation & mVis) = 0;
+	virtual void Update(const Visualisation& mVis) = 0;
 
 	eSide GetSide() { return mSide; }
+	Rectangle GetRect() { return rect; }
 
+	//because the position is private, the only time we can change it is to use this function
 	void SetPosition(Vector2 newPos) { mPos = newPos; }
+
+
 	
-	bool isAlive() { return mAlive; }
+	int GetDamage() { return mDamage; }
 
-	//bool CheckCollision(Entity& other);
+	bool IsAlive() { return mAlive; }
 
+	void CheckCollision(Entity& other);
+	bool CanCollide(const eSide& side, const eSide& other);
+	void TakeDamage(const int& DamageReceived);
 };
 

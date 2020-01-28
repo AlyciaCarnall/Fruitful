@@ -1,10 +1,12 @@
 #pragma once
 #include "Entity.h"
 
-class Background :	public Entity
+class Background : public Entity
 {
 private:
-	Vector2 mBGpos = mPos;
+	//Temp var
+	Vector2 mBGpos{ mPos };
+
 public:
 	Background(const std::string& name);
 	~Background();

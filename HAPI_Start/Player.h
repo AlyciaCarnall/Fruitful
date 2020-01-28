@@ -3,15 +3,11 @@
 
 class Player : public Entity
 {
-private:
-	bool onGround{ true };
 public:
-	
 	Player(const std::string& name);
 	~Player() {}
 
 	void Update(const Visualisation& mVis) override final;
-
 	int getNumLives() const { return 0; }
 	
 };

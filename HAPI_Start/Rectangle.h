@@ -10,6 +10,9 @@ public:
 	BYTE* screen{ nullptr };
 	BYTE* source{ nullptr };
 
+	//default constructor
+	Rectangle() {}
+
 	//constructor
 	Rectangle(int l, int r, int t, int b) : left(l), right(r), top(t), bottom(b) {}
 

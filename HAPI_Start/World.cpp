@@ -4,6 +4,7 @@
 #include "Background.h"
 #include "EnemyBoss.h"
 #include "Bullet.h"
+#include <cassert>
 
 World::~World()
 {
@@ -73,9 +74,6 @@ bool World::Load()
 	entityVector.push_back(newBossEnemy);
 	entityVector.push_back(newPlayer);
 
-	newPlayer->SetPosition(Vector2(0,380));
-	newBossEnemy->SetPosition(Vector2(400, 270));
-
 	/*for (int i{ 0 }; i < 200; ++i)
 	{
 		Bullet* newBullet = new Bullet("Bullet");
@@ -115,21 +113,30 @@ void World::MainMenu()
 	}
 }
 
+constexpr DWORD kTickTime{ 58 };
+
 void World::Play()
 {	
+	DWORD kLastTimeKicked{ 0 };
+
 	mVis->ClearToBlack(0);	
 	while ((HAPI.Update()) &&(mode == GameMode::in_Game_State))
 	{
-		for (auto& p : entityVector)
-			p->Update(*mVis);
+		DWORD kTimeSinceLastTick{ HAPI.GetTime() - kLastTimeKicked };
 
-		for (size_t i{ 0 }; i < entityVector.size(); ++i)
+		if (kTimeSinceLastTick >= kTickTime)
 		{
-			for (size_t j{ i+1 }; j < entityVector.size(); ++j)
-			{
-				//if(entityVector[i]->isEnemyOf(*entityVector[j]);
-				//entityVector[i]->CheckCollision(*entityVector[j]);
+			for (auto& p : entityVector)
+				p->Update(*mVis);
 
+			kLastTimeKicked - HAPI.GetTime();
+
+			for (size_t i{ 0 }; i < entityVector.size(); ++i)
+			{
+				for (size_t j{ i+1 }; j < entityVector.size(); ++j)
+				{
+					entityVector[i]->CheckCollision(*entityVector[j]);
+				}
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 Player::Player(const std::string& name) : Entity(name)
 {
 	mSide = eSide::ePlayer;
+	SetPosition(Vector2(0, 380));
 }
 
 void Player::Update(const Visualisation &mVis)
@@ -29,4 +30,7 @@ void Player::Update(const Visualisation &mVis)
 		if (Controller.digitalButtons[HK_DIGITAL_DPAD_LEFT])
 			mPos.x -= mSpeed;
 	}
+	//The first SetPosition is to put the player on the bottom of the screen
+	
+	SetPosition(mPos);
 }

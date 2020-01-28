@@ -14,7 +14,7 @@ void Background::Update(const Visualisation& mVis)
 	//Renders the sprite twice
 	mVis.BlitTransparentRender(mGFXname, (int)mBGpos.x, (int)mBGpos.y);
 	mVis.BlitTransparentRender(mGFXname, (int)mPos.x, (int)mPos.y);
-	
+
 	//Gets keyboard data
 	static const HAPI_TKeyboardData& Key = HAPI.GetKeyboardData();
 
@@ -24,7 +24,7 @@ void Background::Update(const Visualisation& mVis)
 		//background moves the same as the player
 		mPos.x += mSpeed;
 		mBGpos.x += mSpeed;
-		
+
 		// if the first background goes passed the screen both instances of the background 
 		//will reset to their original position 
 		if (mPos.x >= mVis.getScreenWidth())
@@ -36,7 +36,7 @@ void Background::Update(const Visualisation& mVis)
 		//if the player is going right
 		if (mPos.x > 0)
 			mBGpos = { mPos.x - mVis.getSpriteWidth("Background"), mPos.y }; //left
-		
+
 	}
 
 	if ((Key.scanCode[HK_LEFT]) || Key.scanCode['A'])
@@ -49,9 +49,9 @@ void Background::Update(const Visualisation& mVis)
 			mPos.x = 0;
 			mBGpos.x = 0;
 		}
-			
+
 		if (mPos.x <= 0)
 			mBGpos = { mPos.x + mVis.getSpriteWidth("Background"), mPos.y }; //right
 	}
-		
+
 }
