@@ -2,6 +2,7 @@
 #include "Vector2.h"
 #include "Visualisation.h"
 #include "Rectangle.h"
+#include "World.h"
 
 #include <HAPI_lib.h>
 using namespace HAPISPACE;
@@ -12,7 +13,6 @@ enum class eSide
 	eEnemy,
 	eNeutral
 };
-
 
 class Entity
 {
@@ -25,7 +25,8 @@ protected:
 	bool mAlive{ true };
 	float mSpeed{ 0.2f };
 	Rectangle rect;
-
+	World world;
+	bool isOnGround{ true };
 public:
 
 	Entity(const std::string& name) : mGFXname(name) {}
@@ -39,10 +40,9 @@ public:
 	//because the position is private, the only time we can change it is to use this function
 	void SetPosition(Vector2 newPos) { mPos = newPos; }
 
-
-	
 	int GetDamage() { return mDamage; }
 
+	std::string GetName() { return mGFXname; }
 	bool IsAlive() { return mAlive; }
 
 	void CheckCollision(Entity& other);

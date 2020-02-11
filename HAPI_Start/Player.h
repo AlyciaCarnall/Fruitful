@@ -8,7 +8,5 @@ public:
 	~Player() {}
 
 	void Update(const Visualisation& mVis) override final;
-	int getNumLives() const { return 0; }
-	
 };
 

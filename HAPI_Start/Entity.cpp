@@ -50,5 +50,7 @@ void Entity::TakeDamage(const int& DamageReceived)
 	if (mHealth <= 0)
 	{
 		mAlive = false;
+		if (GetName() == "Player")
+			world.SetState(GameMode::end_Game_State);
 	}
 }

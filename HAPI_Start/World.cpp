@@ -17,6 +17,14 @@ World::~World()
 
 void World::Update()
 {
+
+	if(!HAPI.LoadSound("Data\\Summer(Nature'sCrescendo)StardewValley.wav"))
+		HAPI.UserMessage("Unable to load sounds", "ERROR");
+
+	HAPI_TSoundOptions options;
+	options.loop = true;
+	HAPI.PlaySound("Data\\Summer(Nature'sCrescendo)StardewValley.wav", options);
+
 	switch (mode)
 	{
 	case GameMode::menu_State:
@@ -28,6 +36,7 @@ void World::Update()
 		break;
 
 	case GameMode::end_Game_State:
+		EndGame();
 		break;
 
 	case GameMode::restart_Game_State:
@@ -91,7 +100,12 @@ void World::Run()
 
 void World::MainMenu()
 {
+	if (!mVis->CreateSprite("data\\menubackground.png", "menubackground"))
+		HAPI.UserMessage("Unable to load background", "ERROR");
+
 	mVis->ClearToBlack(0);
+
+	mVis->BlitTransparentRender("menubackground",0,0);
 	
 	while ((HAPI.Update()) && (mode == GameMode::menu_State))
 	{	
@@ -136,8 +150,43 @@ void World::Play()
 				for (size_t j{ i+1 }; j < entityVector.size(); ++j)
 				{
 					entityVector[i]->CheckCollision(*entityVector[j]);
+
+					if ((entityVector[i]->GetName() == "Player") && (entityVector[i]->IsAlive() == false))
+						mode = GameMode::end_Game_State;
+
+					
 				}
 			}
+		}
+	}
+}
+
+void World::EndGame()
+{
+	if (!mVis->CreateSprite("data\\menubackground.png", "endbackground"))
+		HAPI.UserMessage("Unable to load background", "ERROR");
+
+	mVis->ClearToBlack(0);
+
+	mVis->BlitTransparentRender("endbackground", 0, 0);
+
+
+	while ((HAPI.Update()) && (mode == GameMode::end_Game_State))
+	{
+		const HAPI_TKeyboardData& Key = HAPI.GetKeyboardData();
+		const HAPI_TControllerData& Controller = HAPI.GetControllerData(0);
+
+		if ((Key.scanCode['A']))
+			mode = GameMode::in_Game_State;
+		else if ((Key.scanCode['B']))
+			HAPI.Close();
+
+		if (Controller.isAttached)
+		{
+			if (Controller.digitalButtons[HK_DIGITAL_A])
+				mode = GameMode::in_Game_State;
+			else if (Controller.digitalButtons[HK_DIGITAL_B])
+				HAPI.Close();
 		}
 	}
 }

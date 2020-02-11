@@ -42,7 +42,10 @@ public:
 
 	void Play();
 
-	GameMode GetState() { return mode; };
+	void EndGame();
+
+	GameMode GetState() { return mode; }
+	void SetState(const GameMode& newstate) { mode = newstate; }
 
 	//void FireBullet(eSide side);
 };

@@ -4,11 +4,7 @@
 EnemyBoss::EnemyBoss(const std::string& name) : Entity(name)
 {
 	mSide = eSide::eEnemy;
-	SetPosition(Vector2(400, 380));
-}
-
-EnemyBoss::~EnemyBoss()
-{
+	SetPosition(Vector2(400, 310));
 }
 
 void EnemyBoss::Update(const Visualisation& mVis)
